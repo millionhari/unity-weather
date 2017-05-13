@@ -1,0 +1,59 @@
+$grey: rgba(74,74,74,100);
+$hover: lightgrey;
+
+.navbar {
+  background-color: $grey;
+  width: 100%;
+  display: inline-block;
+  color: white;
+  height: 75px;
+  li {
+    padding-right: 10px;
+    margin-right: 10px;
+    &:not(:last-child) {
+      border-right: 1px solid white;
+    }
+    list-style-type: none;
+    display: inline-block;
+    a {
+      color: white;
+      text-decoration: none;
+    }
+  }
+
+  .navbar-list {
+    display: flex;
+    float: right;
+    margin-bottom: 0;
+    padding-top: 20px;
+  }
+
+  .navbar-item {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    a {
+      text-transform: uppercase;
+      letter-spacing: .2rem;
+      font-weight: 400;
+      font-size: 11px;
+      &:hover {
+        color: $hover;
+      }
+    }
+  }
+
+  .unity-logo {
+    width: 84px;
+    height: 30px;
+    display: block;
+    position: absolute;
+    top: 22px;
+    left: 30px;
+    z-index: 10;
+  }
+
+  .unity-logo--color {
+    fill: white;
+  }
+
+}
