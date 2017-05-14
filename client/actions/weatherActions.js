@@ -1,7 +1,9 @@
 import request from 'superagent';
 
-export function getWeather(weatherData) {
-  return dispatch => {
-    return request.get('http://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=15efaed5b4ef511416603cb2986b3133')
-  }
+export function getWeather(cb, apiKey) {
+  return request
+    .get('http://api.openweathermap.org/data/2.5/weather?q=sanfrancisco&units=imperial&APPID='.concat(apiKey))
+    .end((err, res) => {
+      cb(res.body);
+  })
 }
