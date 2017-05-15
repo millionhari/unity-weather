@@ -20,15 +20,17 @@ export default class SignupForm extends React.Component {
   }
 
   onSubmit(e) {
-    //TODO: MAKE SURE SYNC AND LOCALSTORAGE ARE SYNCED, SET STATE EVERYTIME YOU SET LOCAL STORAGE SO RENDER UPDATES CAN HAPPEN
+    // GET INPUT DATA
     e.preventDefault();
     const data = this.props.getFromLocalStorage('unity-weather');
+
     this.props.getWeather((val)=> {
       const newObj = this.props.addToObj(data, {
         [val.name]: val
       });
       this.props.setToLocalStorage('unity-weather', newObj);
-    }, this.props.apiKey)
+    }, this.props.apiKey, this.state.city);
+
     this.props.setWeatherState(data);
   }
 
@@ -37,7 +39,13 @@ export default class SignupForm extends React.Component {
       <div className="col-12">
         <div className="form-group">
           <label className="control-label">City</label>
-          <input onChange={this.onChange} value={this.state.city} type="text" name="city" className="form-control"/>
+          <input
+            onChange={this.onChange}
+            value={this.state.city}
+            type="text"
+            name="city"
+            className="form-control"
+            placeholder="Enter a city name, followed by country code (ex. San Francisco, US)"/>
         </div>
         <div className="form-group">
           <button className="btn btn-primary btn-lg" onClick={this.onSubmit}>
