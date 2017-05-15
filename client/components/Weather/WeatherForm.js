@@ -11,6 +11,7 @@ export default class SignupForm extends React.Component {
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onEnter = this.onEnter.bind(this);
   }
 
   onChange(e) {
@@ -20,7 +21,6 @@ export default class SignupForm extends React.Component {
   }
 
   onSubmit(e) {
-    // GET INPUT DATA
     e.preventDefault();
     const data = this.props.getFromLocalStorage('unity-weather');
 
@@ -32,6 +32,15 @@ export default class SignupForm extends React.Component {
       this.props.setWeatherState(newObj);
     }, this.props.apiKey, this.state.city);
 
+    this.setState({
+      city: ''
+    })
+  }
+
+  onEnter(e) {
+    if (e.key === 'Enter') {
+      this.onSubmit(e);
+    }
   }
 
   render() {
@@ -41,6 +50,7 @@ export default class SignupForm extends React.Component {
           <label className="control-label">City</label>
           <input
             onChange={this.onChange}
+            onKeyPress={this.onEnter}
             value={this.state.city}
             type="text"
             name="city"

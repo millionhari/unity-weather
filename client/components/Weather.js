@@ -14,9 +14,6 @@ export default class Weather extends React.Component {
     this.setWeatherState = this.setWeatherState.bind(this);
   }
 
-  componentDidUpdate() {
-  }
-
   addToObj(obj, addObj) {
     return Object.assign({}, obj, addObj)
   }
@@ -35,11 +32,18 @@ export default class Weather extends React.Component {
 
   renderCities() {
     return map(this.state, (data, key) => {
-      return <WeatherView key={key} city={data}/>
+      return <WeatherView
+        getFromLocalStorage={ this.getFromLocalStorage }
+        setToLocalStorage={ this.setToLocalStorage }
+        setWeatherState={ this.setWeatherState }
+        weatherState={ this.state }
+        key={key}
+        city={data} />
     })
   }
 
   render() {
+    console.log('--Weather State--');
     console.log(this.state);
     return (
       <div>
