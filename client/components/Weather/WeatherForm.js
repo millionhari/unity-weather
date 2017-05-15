@@ -29,9 +29,9 @@ export default class SignupForm extends React.Component {
         [val.name]: val
       });
       this.props.setToLocalStorage('unity-weather', newObj);
+      this.props.setWeatherState(newObj);
     }, this.props.apiKey, this.state.city);
 
-    this.props.setWeatherState(data);
   }
 
   render() {

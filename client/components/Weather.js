@@ -14,6 +14,9 @@ export default class Weather extends React.Component {
     this.setWeatherState = this.setWeatherState.bind(this);
   }
 
+  componentDidUpdate() {
+  }
+
   addToObj(obj, addObj) {
     return Object.assign({}, obj, addObj)
   }
@@ -37,6 +40,7 @@ export default class Weather extends React.Component {
   }
 
   render() {
+    console.log(this.state);
     return (
       <div>
         {this.renderCities()}
