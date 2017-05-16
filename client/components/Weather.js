@@ -15,17 +15,37 @@ export default class Weather extends React.Component {
   }
 
   componentWillMount() {
-    const data = this.getFromLocalStorage('unity-weather');
+    let data = this.getFromLocalStorage('unity-weather');
 
-    _.each(data, (city) => {
+    if (data === null || Object.keys(data).length === 0) {
+      data = this.getDefault();
+    }
+
+    var self = this;
+    var updateTemp = function () {
+      _.each(data, (city) => {
+        getWeather((val)=> {
+          const newObj = self.addToObj(data, {
+            [val.name]: val
+          });
+          self.setToLocalStorage('unity-weather', newObj);
+          self.setState(newObj);
+        }, self.props.apiKey, city.name);
+      });
+    }
+    setTimeout(updateTemp, 300);
+
+  }
+
+  getDefault() {
+    const defaults = ['San Francisco', 'Copenhagen', 'Shanghai'];
+    let defaultObj = {};
+    _.each(defaults, (city) => {
       getWeather((val)=> {
-        const newObj = this.addToObj(data, {
-          [val.name]: val
-        });
-        this.setToLocalStorage('unity-weather', newObj);
-        this.setState(newObj);
-      }, this.props.apiKey, city.name);
+        defaultObj[val.name] = val
+      }, this.props.apiKey, city)
     })
+    return defaultObj;
   }
 
   addToObj(obj, addObj) {
@@ -47,7 +67,6 @@ export default class Weather extends React.Component {
   renderCities() {
     return map(this.state, (data, key) => {
       return <WeatherView
-        getFromLocalStorage={ this.getFromLocalStorage }
         setToLocalStorage={ this.setToLocalStorage }
         setWeatherState={ this.setWeatherState }
         weatherState={ this.state }
@@ -57,8 +76,6 @@ export default class Weather extends React.Component {
   }
 
   render() {
-    console.log('--Weather State--');
-    console.log(this.state);
     return (
       <div>
         <WeatherForm

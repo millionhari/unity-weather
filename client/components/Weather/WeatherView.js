@@ -40,7 +40,6 @@ export default class WeatherView extends React.Component {
 WeatherView.propTypes = {
   city: PropTypes.object.isRequired,
   setWeatherState: PropTypes.func.isRequired,
-  getFromLocalStorage: PropTypes.func.isRequired,
   setToLocalStorage: PropTypes.func.isRequired,
   weatherState: PropTypes.object.isRequired
 }

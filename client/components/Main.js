@@ -7,7 +7,7 @@ export default class Main extends React.Component {
     return (
       <div className="container">
         <div className="row">
-          <h1>Weather</h1>
+          <h1>Unity Weather</h1>
           <Weather apiKey={apiKey}/>
         </div>
       </div>
