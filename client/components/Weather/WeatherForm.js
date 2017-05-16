@@ -21,20 +21,23 @@ export default class SignupForm extends React.Component {
   }
 
   onSubmit(e) {
-    e.preventDefault();
-    const data = this.props.getFromLocalStorage('unity-weather');
+    const regex = /^[^-\s][a-zA-Z0-9_\s-]+$/;
+    if (regex.test(this.state.city)){
+      e.preventDefault();
+      const data = this.props.getFromLocalStorage('unity-weather');
 
-    this.props.getWeather((val)=> {
-      const newObj = this.props.addToObj(data, {
-        [val.name]: val
-      });
-      this.props.setToLocalStorage('unity-weather', newObj);
-      this.props.setWeatherState(newObj);
-    }, this.props.apiKey, this.state.city);
+      this.props.getWeather((val)=> {
+        const newObj = this.props.addToObj(data, {
+          [val.name]: val
+        });
+        this.props.setToLocalStorage('unity-weather', newObj);
+        this.props.setWeatherState(newObj);
+      }, this.props.apiKey, this.state.city);
 
+    }
     this.setState({
       city: ''
-    })
+    });
   }
 
   onEnter(e) {

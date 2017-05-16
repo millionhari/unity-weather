@@ -4,7 +4,7 @@ $unity-teal-focus: #00bcd4;
 .btn-unity {
   background-color: $unity-teal;
   &:hover {
-    background-color: $unity-teal-focus;
+    background-color: $unity-teal-focus !important;
   }
   &:active {
     background-color: $unity-teal-focus;
