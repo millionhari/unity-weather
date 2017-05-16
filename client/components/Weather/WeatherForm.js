@@ -45,7 +45,7 @@ export default class SignupForm extends React.Component {
 
   render() {
     return (
-      <div className="col-12">
+      <div className="col-12 weather-form">
         <div className="form-group">
           <label className="control-label">City</label>
           <input
@@ -55,10 +55,10 @@ export default class SignupForm extends React.Component {
             type="text"
             name="city"
             className="form-control"
-            placeholder="Enter a city name, followed by country code (ex. San Francisco, US)"/>
+            placeholder="Enter a city name, followed by optional country code (ex. San Francisco, US)"/>
         </div>
         <div className="form-group">
-          <button className="btn btn-primary btn-lg" onClick={this.onSubmit}>
+          <button className="btn btn-primary btn-unity btn-lg" onClick={this.onSubmit}>
             Add City
           </button>
         </div>

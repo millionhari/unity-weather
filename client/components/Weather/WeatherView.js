@@ -16,14 +16,22 @@ export default class WeatherView extends React.Component {
 
   render() {
     return (
-      <div className="city">
-        <div className="col-6 city-name">
-          {this.props.city.name}
+      <div className="col-12 city">
+        <div className="col-6 col-6-sm">
+          <h1 className="city-name">{this.props.city.name}</h1>
         </div>
-        <div className="col-5 city-temperature">
-          {Math.round(this.props.city.main.temp)}
+        <div className="col-3 col-6-sm">
+          <h1 className="city-temperature">{Math.round(this.props.city.main.temp)}°</h1>
+          <p className="city-conditions">{this.props.city.weather[0].main}</p>
         </div>
-        <div onClick={this.removeCity} className="col-1 close-button">x</div>
+        <div className="col-2 col-6-sm">
+          <div className="row">
+            <div className="col-12">
+              <p><span className="font-regular">High</span> {Math.round(this.props.city.main.temp_max)}<br/><span className="font-regular">Low</span> {Math.round(this.props.city.main.temp_min)}</p>
+            </div>
+          </div>
+        </div>
+        <div className="col-1 close-button" onClick={this.removeCity}>x</div>
       </div>
     );
   }

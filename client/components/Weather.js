@@ -47,7 +47,6 @@ export default class Weather extends React.Component {
     console.log(this.state);
     return (
       <div>
-        {this.renderCities()}
         <WeatherForm
           addToObj={ this.addToObj }
           getFromLocalStorage={ this.getFromLocalStorage }
@@ -55,6 +54,7 @@ export default class Weather extends React.Component {
           setWeatherState={ this.setWeatherState }
           apiKey={ this.props.apiKey }
           getWeather={ getWeather }/>
+        {this.renderCities()}
       </div>
     );
   }

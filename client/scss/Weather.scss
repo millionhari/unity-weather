@@ -1,0 +1,47 @@
+$unity-teal: #009688;
+$unity-teal-focus: #00bcd4;
+
+.btn-unity {
+  background-color: $unity-teal;
+  &:hover {
+    background-color: $unity-teal-focus;
+  }
+  &:active {
+    background-color: $unity-teal-focus;
+  }
+}
+
+.cities {
+  margin-top: 20px;
+}
+
+.city {
+  border-bottom: 1px solid grey;
+  margin-bottom: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.city-name {
+
+}
+
+.city-temperature {
+  margin-bottom: 0;
+}
+
+.city-conditions {
+  margin-top: 0;
+}
+
+.weather-form {
+  padding-bottom: 20px;
+}
+
+.weather-view {
+  .col-6 {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
