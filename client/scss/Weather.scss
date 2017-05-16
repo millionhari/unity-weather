@@ -24,7 +24,7 @@ $unity-teal-focus: #00bcd4;
 }
 
 .city-name {
-
+  word-wrap: break-word;
 }
 
 .city-temperature {
@@ -39,8 +39,14 @@ $unity-teal-focus: #00bcd4;
   padding-bottom: 20px;
 }
 
-.close-button {
+.close-button-container {
   text-align: right;
+}
+
+.close-button {
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .weather-view {
